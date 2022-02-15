@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <style>
+        .circle {
+            margin-top: 3rem;
+            box-sizing: border-box;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            padding-left: 50px;
+            background-image: linear-gradient(to 
+              left, #fff, #fff 50%, #000 50%, #000);
+            animation: roll 10s linear infinite;
+          }
+          
+          .yinyang {
+            position: relative;
+            background: #fff;
+            height: 100px;
+            width: 100px; 
+            border-radius: 50%;
+            background-image: linear-gradient(
+              to left, #fff, #fff 50%, #000 50%, #000);
+            animation: roll 4s linear infinite;
+            animation-direction: reverse;
+          } 
+          
+          .yinyang:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translatex(-50%);
+            background: #fff;
+            border: 18px solid #000;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+           }
+          
+          .yinyang:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translatex(-50%);
+            background: #000;
+            border: 18px solid #fff;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+          }
+          
+          @keyframes roll {
+            from {
+              transform:rotate(0deg);
+            }
+            to {
+              transform:rotate(-360deg);
+            }
+          }
+          
+          body {
+            display: flex;
+            justify-content: center;
+            background: #efefef;
+            text-align: center;
+            font-family: sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+          p {
+            opacity: .55;
+          }
+          .wrapper {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            box-shadow:
+                0 1px 1px hsl(0deg 0% 0% / 0.075),
+                0 2px 2px hsl(0deg 0% 0% / 0.075),
+                0 4px 4px hsl(0deg 0% 0% / 0.075),
+                0 8px 8px hsl(0deg 0% 0% / 0.075),
+                0 16px 16px hsl(0deg 0% 0% / 0.075)
+              ;
+          }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>
+              <svg style="transform:translatey(5px)" xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 260 220">
+                <path fill="#000" d="M5 187c100 62 227-7 225-130 10-7 19-16 26-27-10 5-20 8-31 9 11.4-7 20-17 24-29-10 6-20 10-33 13-43-41.3-100 3-88 47-43-2-80-23-106-54C10 40 15 71 39 85 30 84 20 82 15 78c0 26 18 46 41 51-8 2-15 3-23 1 6 20 26 36 48 36-20 16-47 24-76 21z"/>
+              </svg>
+              Ashish Kumar
+            </p>
+            
+            <div class="wrapper">
+              <div class="circle">
+                <div class="yinyang"></div>
+                <div class="yinyang"></div>
+              </div>
+            </div>
+            
+          </div>
+    </body>
+</html>
