@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer="" src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
+    <style>
+      .symbol {
+        color:#333;
+        font-size:200px;
+      }
+      div#result{
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row" id="result"></div>
+    <div class="row">
+      <div title="Player" id="player" class="col-md-4 col-md-offset-2"></div>
+      <div id="computer" title="Computer" class="col-md-4"></div>
+    </div>
+    <div class="row">
+      <center>
+        <div class="btn-group btn-group-lg" role="group">
+          <button type="button" onclick="rock()" class="btn btn-info">Rock</button>
+          <button type="button" onclick="paper()" class="btn btn-info">Papper</button>
+          <button type="button" onclick="scissors()" class="btn btn-info">Scissors</button>
+        </div>
+      </center>
+    </div>
+  </body>
+  <script>
+    $(function(){});
+    var hand = ["rock","paper","scissors"];
+    function rock() {
+      $("#player").html("<i class='symbol far fa-hand-rock'></i>");
+      rockPaperScissors();
+    }
+    function paper() {
+      $("#player").html("<i class='symbol far fa-newspaper'></i>");
+      rockPaperScissors();
+    }
+    function scissors() {
+      $("#player").html("<i class='symbol far fa-hand-scissors'></i>");
+      rockPaperScissors();
+    }
+    function rockPaperScissors() {
+      var symbol = arguments.callee.caller.name;
+      var cpuSymbol = hand[Math.floor(Math.random() * 3)];
+      switch(cpuSymbol) {
+        case "rock":
+          $("#computer").html("<i class='symbol far fa-hand-rock'></i>");
+          console.log(symbol == "scissors" ? denoteLoser() : symbol == "paper" ? denoteWinner() : denoteDraw());
+          break;
+        case "paper":
+          $("#computer").html("<i class='symbol far fa-newspaper'></i>");
+          console.log(symbol == "rock" ? denoteLoser() : symbol == "scissors" ? denoteWinner() : denoteDraw())
+          break;
+        case "scissors":
+          $("#computer").html("<i class='symbol far fa-hand-scissors'></i>");
+          console.log(symbol == "paper" ? denoteLoser() : symbol == "rock" ? denoteWinner() : denoteDraw())
+          break;
+      }
+    }
+    function denoteWinner() {
+      $("#result").html("<h1 class='alert alert-success'>You Win!</h1>")
+    }
+    function denoteLoser() {
+      $("#result").html("<h1 class='alert alert-danger'>You Lose!</h1>")
+    }
+    function denoteDraw() {
+      $("#result").html("<h1 class='alert alert-info'> Draw!</h1>")
+  }
+  </script>
+</html>
